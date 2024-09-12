@@ -51,22 +51,15 @@
         </thead>
         <tbody>
             <?php
-            // Conectar a la base de datos
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "pedidos";
+            include '../backend/config.php';
 
-            // Crear conexión
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Verificar conexión
             if ($conn->connect_error) {
                 die("Conexión fallida: " . $conn->connect_error);
             }
 
-            // Consulta SQL para obtener los datos
-            $sql = "SELECT * FROM tb_pedidos_eliminados"; 
+            $sql = "SELECT * FROM tb_pedidos_eliminados";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -87,7 +80,7 @@
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='3'>No hay datos disponibles</td></tr>";
+                echo "<tr><td colspan='11'>No hay datos disponibles</td></tr>";
             }
 
             // Cerrar la conexión
